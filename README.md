@@ -195,36 +195,108 @@ JavaScript es un lenguaje débilmente tipado y dinámico. Las variables en JavaS
 
 # MÉTODOS CON CADENAS
 
-En JavaScript las cadenas tienen una serie de métodos integrados que nos pueden servir de gran ayuda. Son acciones A la hora de trabajar con ellas.
+En JavaScript las cadenas tienen una serie de métodos integrados que nos pueden ser de gran utilidad. Estos métodos implementan acciones que se usan frecuentemente cuando se trabaja con cadenas.
 
-Cuando creamos una cadena realmente se trata de una instancia del objeto cadena y por eso tiene asociadas a ella propiedades y métodos.
+Normalmente, en los lenguajes de programación las cadenas no pueden tener métodos ni propiedades porque no son objetos. Sin embargo, JavaScript trata las cadenas como objetos y cuando creamos una cadena realmente lo que hacemos es crear una instancia del objeto cadena. Es por ello que pueden tener propiedades y ejecutar métodos.
 
-De igual forma que una cadena siempre tiene la propiedad `length`, la cual representa la cantidad total de caracteres de la misma, 
-
-
-Normalmente, cadenas como "John Doe" no pueden tener métodos ni propiedades porque no son objetos.
-
-Pero con JavaScript, los métodos y propiedades también están disponibles para las cadenas, porque JavaScript trata las cadenas como objetos cuando ejecuta métodos y propiedades.
+</br>
 
 
-Note
-All string methods return a new value.
+> **NOTA:**</br>
+Es importante destacar que todos los métodos devuelven un valor nuevo y en ningún caso alteran la cadena original.
 
-They do not change the original variable.
-
-
-### `slice()`
-
-### `toUpperCase()`
-
-### `toLowerCase()`
-
-### `replace()`
+</br>
 
 
+### MÉTODO `slice()`
+
+Este método devuelve una nueva cadena con parte de la cadena original. Se deben especificar los índices entre los que se debe extraer la cadena:
+
+```js
+let frase = "El veloz murciélago hindú comía feliz cardillo y kiwi.";
+
+console.log(frase.slice(3, 8)); //veloz
+console.log(frase.slice(-5, -1)); //kiwi
+console.log(frase.slice(26, )); //comía feliz cardillo y kiwi.
+```
+
+</br>
 
 
+### MÉTODO `concat()`
 
+Este método concatena una o mas cadenas a la cadena original:
+
+```js
+let frase = "La frase es: "
+
+let parte1 = "El veloz murciélago hindú";
+let parte2 = " comía feliz";
+let parte3 = " cardillo y kiwi.";
+
+console.log(frase.concat(parte1, parte2, parte3)); //La frase es: El veloz murciélago hindú comía feliz cardillo y kiwi.
+```
+
+</br>
+
+
+### MÉTODO `replace()`
+
+Este método busca la primera coincidencia de una palabra o cadena dentro de la cadena original y la reemplaza por la cadena especificada:
+
+```js
+let frase = "El veloz murciélago hindú comía feliz cardillo y kiwi.";
+
+console.log(frase.replace("veloz", "lento")); //El lento murciélago hindú comía feliz cardillo y kiwi.
+```
+
+</br>
+
+
+### MÉTODO `toUpperCase()`
+
+Este método transforma la cadena entera a letras mayúsculas:
+
+```js
+let frase = "El veloz murciélago hindú comía feliz cardillo y kiwi.";
+
+console.log(frase.toUpperCase()); //EL VELOZ MURCIÉLAGO HINDÚ COMÍA FELIZ CARDILLO Y KIWI.
+```
+
+</br>
+
+
+### MÉTODO `toLowerCase()`
+
+Este método transforma la cadena entera a letras minúsculas:
+
+```js
+let frase = "EL VELOZ MURCIÉLAGO HINDÚ COMÍA FELIZ CARDILLO Y KIWI.";
+
+console.log(frase.toLowerCase()); //el lento murciélago hindú comía feliz cardillo y kiwi.
+```
+
+</br>
+
+
+### MÉTODO `trim()`
+
+Este método elimina los espacios en blanco al inicio y final de la cadena:
+
+```js
+let frase = "       Soledad       "
+
+console.log(frase.trim()); //Soledad
+```
+
+</br></br>
+
+
+### LISTA COMPLETA DE MÉTODOS
+
+La cantidad de métodos que podemos realizar con cadenas en JavaScript es amplia. Podemos ver una lista de todos ellos y su descripción a continuación:
+
+</br>
 
 
 Nombre | Descripción
@@ -257,9 +329,6 @@ trim()              | Devuelve una cadena con espacios en blanco eliminados
 trimEnd()           | Devuelve una cadena con espacios en blanco eliminados del final
 trimStart()         | Devuelve una cadena con espacios en blanco eliminados desde el principio
 valueOf()           | Devuelve el valor primitivo de una cadena o un objeto de cadena
-
-
-
 
 </br></br></br></br>
 
