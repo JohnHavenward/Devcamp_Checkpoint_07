@@ -4,7 +4,7 @@
 
 TODO [¿Qué diferencia a Javascript de cualquier otro lenguaje de programación?](#)</br>
 TODO [¿Cuáles son algunos tipos de datos JS?](#tipos-de-datos)</br>
-TODO [¿Cuáles son las tres funciones de String en JS?](#métodos-con-cadenas)</br>
+[¿Cuáles son las tres funciones de String en JS?](#métodos-con-cadenas)</br>
 TODO [¿Qué es un condicional?](#)</br>
 [¿Qué es un operador ternario?](#operador-ternario)</br>
 TODO [¿Cuál es la diferencia entre una declaración de función y una expresión de función?](#)</br>
