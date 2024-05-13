@@ -5,7 +5,7 @@
 TODO [¿Qué diferencia a Javascript de cualquier otro lenguaje de programación?](#)</br>
 TODO [¿Cuáles son algunos tipos de datos JS?](#tipos-de-datos)</br>
 [¿Cuáles son las tres funciones de String en JS?](#métodos-con-cadenas)</br>
-TODO [¿Qué es un condicional?](#)</br>
+[¿Qué es un condicional?](#expresiones-condicionales)</br>
 [¿Qué es un operador ternario?](#operador-ternario)</br>
 TODO [¿Cuál es la diferencia entre una declaración de función y una expresión de función?](#)</br>
 TODO [¿Qué es la palabra clave "this" en JS?](#)</br>
@@ -174,8 +174,36 @@ También es muy adecuado para la web porque puede establecer relaciones en tiemp
 
 # TIPOS DE DATOS
 
+Todos los lenguajes de programación tienen estructuras de datos integradas, pero estas a menudo difieren de un lenguaje a otro. Las estructuras de datos integradas disponibles en JavaScript y las propiedades que tienen. Estas se pueden utilizar para construir otras estructuras de datos. 
+
+Constructores!!
+
 Tipado dinámico
-JavaScript es un lenguaje débilmente tipado y dinámico. Las variables en JavaScript no están asociadas directamente con ningún tipo de valor en particular, y a cualquier variable se le puede asignar (y reasignar) valores de todos los tipos:
+
+JavaScript es un lenguaje débilmente tipado y dinámico. Las variables en JavaScript no están asociadas directamente con ningún tipo de valor en particular, y a cualquier variable se le puede asignar (y reasignar) valores de todos los tipos.
+
+Hay básicamente nueve estructuras y tipos de datos a nuestra disposición en JavaScript y son las siguientes:
+
+
+Seis tipos de datos primitivos, controlados por el operador typeof ???
+
+Undefined
+
+Boolean
+
+Number
+
+String
+
+BigInt
+
+Symbol
+
+Null
+
+Object
+
+Function
 
 
 
@@ -185,7 +213,148 @@ JavaScript es un lenguaje débilmente tipado y dinámico. Las variables en JavaS
 
 
 
+Valores primitivos
+Todos los tipos, excepto los objetos, definen valores inmutables (es decir, valores que no se pueden cambiar). Por ejemplo (y a diferencia de C), las cadenas son inmutables. Nos referimos a los valores de estos tipos como "valores primitivos".
 
+</br>
+
+
+### TIPO BOOLEAN
+
+Boolean representa una entidad lógica y puede tener dos valores: `true` y `false`. Estos dos valores equivalen a "sí" y "no", "se cumple" y "no se cumple", y son mayormente usados en estructuras condicionales.
+
+```js
+
+```
+
+</br>
+
+
+### TIPO NULL
+
+El tipo Null representa la ausencia intencional de cualquier valor de objeto y tiene un único valor: `null`. Se trata de un tipo especial de valor primitivo de JavaScript que equivale a "nada", "vacío" o "valor desconocido".
+
+En operaciones booleanas el valor `null` se entiende como `false`.
+
+También cabe mencionar que si un objeto no se hereda de otro, se muestra en valor `null`.
+
+```js
+if
+```
+
+</br>
+
+
+### TIPO UNDEFINED
+
+Una variable a la que no se le ha asignado ningún valor es del tipo `undefined` y su valor es `undefined`.
+
+También podemos asignar explícitamente el valor `undefined` a la variable para darle este tipo. 
+
+```js
+let car;    // Value is undefined, type is undefined
+
+car = undefined;    // Value is undefined, type is undefined
+```
+Cabe destacar que el valor `""` convierte la variable en tipo `string` y no en `undefined`. 
+
+</br>
+
+
+### TIPO NUMBER
+
+El tipo `number` es uno de los dos tipos numéricos disponibles en JavaScript: `number` y `BigInt`.
+
+A diferencia de otros lenguajes de programación en JavaScript no existen los tipos numéricos `int` y `float` por separado, ambos se incluyen en el tipo `number`. 
+
+Se trata de un valor en formato binario de 64 bits de doble precisión (números entre -(253e-1) y 253e-1). Además de representar números de punto flotante, el tipo Number tiene tres valores simbólicos: +Infinity, -Infinity y NaN ("Not a Number" o No es un número).
+
+
+
+Para verificar el valor disponible más grande o el valor más pequeño disponible dentro de ±Infinity, puedes usar las constantes Number.MAX_VALUE o Number.MIN_VALUE.
+
+Nota: A partir de ECMAScript 2015, también puedes comprobar si un número está en el rango de números de punto flotante de doble precisión mediante Number.isSafeInteger() así como Number.MAX_SAFE_INTEGER y Number.MIN_SAFE_INTEGER.Más allá de este rango, los enteros en JavaScript ya no son seguros y serán una aproximación de punto flotante de doble precisión del valor.
+El tipo number solo tiene un entero con dos representaciones: 0 se representa como -0 y +0. (0 es un alias de +0).
+
+</br>
+
+
+### TIPO BIGINT
+
+El tipo BigInt es un primitivo numérico en JavaScript que puede representar números enteros con precisión arbitraria. Con BigInts, puedes almacenar y operar de forma segura en números enteros grandes incluso más allá del límite seguro de enteros para Numbers.
+
+Un BigInt se crea agregando `n` al final de un número entero o haciendo una llamando al constructor.
+
+Puedes obtener el valor más seguro que se puede incrementar con Numbers utilizando la constante Number.MAX_SAFE_INTEGER. Con la introducción de BigInts, puedes operar con números más allá de Number.MAX_SAFE_INTEGER.
+
+Este ejemplo demuestra, dónde, incrementando el Number.MAX_SAFE_INTEGER devuelve el resultado esperado:
+
+```js
+> const x = 2n ** 53n;
+9007199254740992n
+> const y = x + 1n;
+9007199254740993n
+```
+
+Los BigInt no se pueden utilizar indistintamente con los Number. En su lugar, se lanzará un TypeError.
+
+</br>
+
+
+### TIPO STRING
+
+El tipo String de JavaScript se utiliza para representar datos textuales. Es un conjunto de "elementos" de valores enteros sin signo de 16 bits. Cada elemento del String ocupa una posición en la cadena. El primer elemento está en el índice 0, el siguiente en el índice 1, y así sucesivamente. La longitud de una cadena es el número de elementos que contiene.
+
+A diferencia de algunos lenguajes de programación (tal como C), las cadenas de JavaScript son inmutables. Esto significa que una vez que se crea una cadena, no es posible modificarla.
+
+Sin embargo, todavía es posible crear otra cadena basada en una operación en la cadena original. Por ejemplo:
+
+Una subcadena de la original seleccionando letras individuales o usando String.substr().
+Una concatenación de dos cadenas usando el operador de concatenación (+) o String.concat().
+¡Ten cuidado de no "convertir a cadenas" tu código!
+
+Puede resultar tentador utilizar cadenas para representar datos complejos. Hacer esto viene con beneficios a corto plazo:
+
+Es fácil construir cadenas complejas con concatenación.
+Las cadenas son fáciles de depurar (lo que ves impreso siempre es lo que está en la cadena).
+Las cadenas son el denominador común de muchas APIs (campos de entrada —inputs—, valores de almacenamiento local, respuestas XMLHttpRequest cuando se usa responseText, etc.) y puede resultar tentador trabajar solo con cadenas.
+Con las convenciones, es posible representar cualquier estructura de datos en una cadena. Esto no la convierte en una buena idea. Por ejemplo, con un separador, se podría emular una lista (mientras que un arreglo de JavaScript sería más adecuado). Desafortunadamente, cuando el separador se usa en uno de los elementos de la "lista", la lista se rompe. Se puede elegir un caracter de escape, etc. Todo esto requiere convenciones y crea una innecesaria carga de mantenimiento.
+
+Utiliza cadenas para datos textuales. Cuando quieras representar datos complejos, procesa las cadenas y usa la abstracción adecuada.
+
+</br>
+
+
+### TIPO SYMBOL
+
+Un símbolo es un valor primitivo único e inmutable y se puede utilizar como clave de una propiedad de objeto (ve más abajo). En algunos lenguajes de programación, los símbolos se denominan "átomos".
+
+Para obtener más detalles, consulta Symbol y el contenedor de objetos Symbol en JavaScript.
+
+</br>
+
+
+### OBJETOS
+
+En ciencias de la computación, un objeto es un valor en la memoria al que posiblemente hace referencia un identificador.
+
+Propiedades
+En JavaScript, los objetos se pueden ver como una colección de propiedades. Con la sintaxis de objeto literal, se inicia un conjunto limitado de propiedades; luego se pueden agregar y eliminar propiedades. Los valores de propiedad pueden ser valores de cualquier tipo, incluidos otros objetos, lo que permite construir estructuras de datos complejas. Las propiedades se identifican mediante valores clave. Un valor clave es un valor de cadena o un símbolo.
+
+Hay dos tipos de propiedades de objeto que tienen ciertos atributos: la propiedad data y la propiedad accessor.
+
+Nota: Cada propiedad tiene atributos correspondientes. Los atributos, internamente los utiliza el motor JavaScript, por lo que no puedes acceder a ellos directamente. Es por eso que los atributos se enumeran entre corchetes dobles, en lugar de simples.Consulta Object.defineProperty() para obtener más información.
+
+Tipo estructural especial que no es de datos pero para cualquier instancia de objeto construido que también se utiliza como estructuras de datos: new Object, new Array, new Map, new Set, new WeakMap, new WeakSet, new Date y casi todo lo hecho con la palabra clave new;
+
+Ten en cuenta que el único propósito valioso del uso del operador typeof es verificar el tipo de dato. Si deseamos verificar cualquier Tipo Estructural derivado de Object, no tiene sentido usar typeof para eso, ya que siempre recibiremos "object". La forma correcta de comprobar qué tipo de Objeto estamos usando es la palabra clave instanceof. Pero incluso en ese caso, puede haber conceptos erróneos.
+
+</br>
+
+
+### FUNCIONES
+
+una estructura sin datos, aunque también responde al operador typeof: typeof instance === "function". Esta simplemente es una forma abreviada para funciones, aunque cada constructor de funciones se deriva del constructor Object.
 
 
 </br></br></br></br>
@@ -335,53 +504,46 @@ valueOf()           | Devuelve el valor primitivo de una cadena o un objeto de c
 
 
 
-# ¿Qué es un condicional?
+# EXPRESIONES CONDICIONALES
 
+Las expresiones condicionales en JavaScript son una estructura de control básica capaz de evaluar una condición y ejecutar líneas de código u omitirlas en función de si esta se cumple o no se cumple.
 
+Las condiciones evaluadas devuelven un valor booleano por lo que solo pueden ser `true` o `false`.
 
-
-
-
-
-
-
-
-
-
-# CONDICIONALES PYTHON
-
-Los condicionales en python son una estructura de control básica capaz de evaluar una condición y ejecutar líneas de código u omitirlas en función de si esta se cumple o no se cumple.
-
-Las condiciones evaluadas devuelven un valor booleano por lo que solo pueden ser `True` o `False`.
-
-Para definir un condicional se debe usar la palabra clave `if` seguida de la expresión condicional a evaluar y el símbolo `:`. Finalmente se agrega el código a ejecutar en caso de cumplirse la condición, el cual debe estar correctamente indentado para evitar errores.
+Para definir un condicional se debe usar la palabra clave `if` seguida de la expresión condicional a evaluar dentro de paréntesis. A continuación se agrega el bloque de código a ejecutar en caso de cumplirse la condición. Este bloque debe estar definido dentro de llaves `{}` salvo en el caso de que contenga una única línea de código. 
 
 Vemos un ejemplo a continuación:
 
-```python
-cantidad_hojas = 12
+```js
+cantidadHojas = 12;
 
-if cantidad_hojas < 50:
-    print("Quedan pocas hojas")
+if (cantidadHojas < 50) {
+      console.log("ALERTA!!!");
+      console.log("Quedan pocas hojas");
+}
     
-# Quedan pocas hojas
+//ALERTA!!!
+//Quedan pocas hojas
 ```
-</br>
 
-La condición a evaluar también puede ser una variable. Esta puede ser un número o incluso una cadena en cuyo caso solo el número `0` y una cadena vacía `""` serán interpretados como `False`, y cualquier otro valor será evaluado como `True`. Vemos un ejemplo de ello a continuación:
-
-```python
-lluvia = True
-
-if lluvia:
-    print("Está lloviendo")
-    
-# Está lloviendo
-```
 </br>
 
 
-#### OPERADORES DE COMPARACIÓN
+La condición a evaluar también puede ser una variable. Esta puede ser un número o incluso una cadena en cuyo caso solo el número `0` y una cadena vacía `""` serán interpretados como `false`, y cualquier otro valor será evaluado como `true`. Vemos un ejemplo de ello a continuación:
+
+```js
+lluvia = true;
+
+if (lluvia)
+      console.log("Está lloviendo");
+
+//Está lloviendo
+```
+
+</br>
+
+
+### OPERADORES DE COMPARACIÓN
 
 Existen varios tipos de operadores para poder comparar expresiones y se muestran en la siguiente tabla:
 
@@ -397,42 +559,46 @@ Símbolo | Operación
 
 Podemos ver varios ejemplos a continuación:
 
-```python
-print("abc" == "ABC") #False
+```js
+console.log("abc" == "ABC") //false
 
-print("Entrar" != "Salir") #True
+console.log("Entrar" != "Salir") //true
 
-print(3 < 8) #True
+console.log(3 < 8) //true
 
-print(7 <= 5) #False
+console.log(7 <= 5) //false
 
-print("a" > "z") #False
+console.log("a" > "z") //false
 
-print(4 >= 4) #True
+console.log(4 >= 4) //true
 ```
+
 </br>
 
 
-### ELIF
+### ELSE IF
 
-En caso de que la primera condición no se cumpla y deseemos agregar condiciones alternativas a evaluar podemos hacerlo mediante la palabra clave `elif`.
+En caso de que la primera condición no se cumpla y deseemos agregar condiciones alternativas a evaluar podemos hacerlo mediante la palabra clave `else if`.
 
-Se pueden añadir tantos bloques elif como se desee pero estos se evalúan en el orden en el que han sido definidos en el condicional y en ningún caso se ejecutará más de uno. El primero en cumplir la condición será el único ejecutado.
+Se pueden añadir tantos bloques `else if` como se desee pero estos se evalúan en el orden en el que han sido definidos en el condicional y en ningún caso se ejecutará más de uno. El primero en cumplir la condición será el único ejecutado.
 
 
-```python
-porcentaje_carga = 43
+```js
+porcentajeCarga = 43;
 
-if porcentaje_carga < 5:
-    print("Queda muy poca batería")
-elif porcentaje_carga < 25:
-    print("Queda menos del 25% de la batería")
-elif porcentaje_carga < 50:
-    print("Queda menos del 50% de la batería")
-elif porcentaje_carga < 75:
-    print("Queda menos del 75% de la batería")
+if (porcentajeCarga < 5)
+      console.log("Queda muy poca batería");
+    
+else if (porcentajeCarga < 25)
+      console.log("Queda menos del 25% de la batería");
 
-# Queda menos del 50% de la batería
+else if (porcentajeCarga < 50)
+      console.log("Queda menos del 50% de la batería");
+
+else if (porcentajeCarga < 75)
+      console.log("Queda menos del 75% de la batería");
+
+//Queda menos del 50% de la batería
 ```
 </br>
 
@@ -441,109 +607,161 @@ elif porcentaje_carga < 75:
 
 Podemos agregar un bloque de código que se ejecute en caso de que no se cumpla ninguna de las condiciones anteriores. Para ello debemos hacer uso de la palabra clave `else` sin ninguna condición asociada.
 
-Solo puede haber un bloque *else* en un condicional y siempre debe estar definido al final de este. Podemos ver un ejemplo a continuación:
+Solo puede haber un bloque `else` en un condicional y siempre debe estar definido al final de este. Podemos ver un ejemplo a continuación:
 
-```python
-color_objeto = "morado"
+```js
+colorObjeto = "morado"
 
-if color_objeto == "azul":
-    print("El objeto es azul")
-elif color_objeto == "rojo":
-    print("El objeto es rojo")
-else:
-    print("El objeto no es ni azul ni rojo")
+if (colorObjeto == "azul")
+      console.log("El objeto es azul");
     
-# El objeto no es ni azul ni rojo
+else if (colorObjeto == "rojo")
+      console.log("El objeto es rojo");
+    
+else
+      console.log("El objeto no es ni azul ni rojo");
+    
+//El objeto no es ni azul ni rojo
 ```
+
 </br>
 
 
 ### OPERADORES LÓGICOS
 
-Estos operadores evalúan dos condiciones y devuelven `True` en función de la operación representada. En el caso del operador `not` solo se evalúa una condición. Podemos ver en la tabla siguiente la operación realizada por cada uno:
+Estos operadores evalúan dos condiciones y devuelven `true` en función de la operación representada. En el caso de la  operación NOT solo se evalúa una condición. Podemos ver en la tabla siguiente la operación realizada por cada uno:
 
-Expresión | Operación
-:-------: | ---------
-and | ambas condiciones se cumplen
-or | al menos una de las dos condiciones se cumple
-^ | una condición se cumple y la otra no 
-not | la condición no se cumple
+Nombre | Operador | Descripción
+:-------: | :-------: | ---------
+AND | && | ambas condiciones se cumplen
+OR | \|\| | al menos una de las dos condiciones se cumple
+NOT | ! | la condición no se cumple
 </br>
+
 
 A continuación se muestran algunos ejemplos de su uso:
 
-```python
-print(True and True) #True
-print(True and False) #False
-print(False and False) #False
+```js
+console.log(true && true) //true
+console.log(true && false) //false
+console.log(false && false) //false
 
-print(True or True) #True
-print(True or False) #True
-print(False or False) #False
+console.log(true || true) //true
+console.log(true || false) //true
+console.log(false || false) //false
 
-print(True ^ True) #False
-print(True ^ False) #True
-print(False ^ False) #False
-
-print(not True) #False
-print(not False) #True
+console.log(!true) //false
+console.log(!false) //true
 ```
+
 </br>
 
-Podemos ver el uso del operador lógico `not` en el siguiente condicional:
 
-```python
-acceso_permitido = False
+Vemos el uso de la operación lógica NOT en el siguiente condicional:
 
-if not acceso_permitido:
-    print("No puedes pasar")
+```js
+accesoPermitido = false;
+
+if (!accesoPermitido)
+      console.log("No puedes pasar");
     
-# No puedes pasar
+//No puedes pasar
 ``` 
 </br>
 
 
-### CONDICIONALES COMPUESTOS
+Podemos usar operadores lógicos para crear condicionales compuestos que nos permiten evaluar múltiples condiciones a la vez. Vemos un ejemplo a continuación:
 
-Los condicionales compuestos nos permiten evaluar múltiples condiciones a la vez. Para ello debemos usar operadores lógicos tal y como se observa en el siguiente ejemplo:
+```js
+alturaViajero = 120;
+edadViajero = 9;
 
-```python
-primera_condicion = True
-segunda_condicion = True
-tercera_condicion = False
+if (alturaViajero >= 130 || edadViajero >= 8)
+      console.log("El viajero puede montarse en la atracción");
 
-if primera_condicion and segunda_condicion and tercera_condicion:
-    print("Se cumplen todas condiciones")
-else:
-    print("No se cumplen todas condiciones")
+else
+      console.log("El viajero no puede montarse en la atracción");
     
-# No se cumplen todas condiciones
+//El viajero puede montarse en la atracción
 ```
-</br>
 
-A continuación podemos ver otro ejemplo de condicional compuesto:
-
-```python
-altura_viajero = 120
-edad_viajero = 9
-
-if altura_viajero >= 130 or edad_viajero >= 8:
-    print("El viajero puede montarse en la atracción")
-else:
-    print("El viajero no puede montarse en la atracción")
-    
-# El viajero puede montarse en la atracción
-```
 </br>
 
 
+### CONDICIONAL SWITCH
+
+En ocasiones es necesario evaluar una variable y ejecutar un código concreto en función de su valor. Para estos casos puntuales las estructura *if-else* resultan poco eficientes y su código difícil de leer, sobre todo cuando las opciones son muchas. Es por ello que JavaScript nos permite usar una expresión condicional alternativa llamada `switch` y que resulta óptima para esos casos.
+
+En un condicional `switch` una variable es evaluada y se comprueba si coincide con alguno de los valores definidos en él. En caso de que exista esa correspondencia se ejecuta el código correspondiente a ese valor en concreto.
+
+Para su definición se usa la palabra clave `switch` junto con la variable a evaluar dentro de paréntesis. El resto del código contiene los diferentes casos posibles y debe estar declarado dentro de llaves `{}`. Cada caso se define con la palabra clave `case` seguido del valor, el signo `:` y todo el código correspondiente a ejecutar. Se pueden definir tantos casos como se quiera y cada uno de estos debe finalizar con la sentencia `break` que se encarga de romper el flujo del condicional `switch` y continuar con el resto del programa.
+
+También se puede especificar un caso especial `default` que será el ejecutado por defecto en caso de no haber ninguna coincidencia con el resto de casos.
+
+</br>
 
 
+Vemos un ejemplo de un condicional `switch` a continuación:
+
+```js
+let díaSemana = "Jueves";
+
+switch (díaSemana) {
+      case "Lunes":
+            console.log("Es lunes");
+            break;
+            
+      case "Martes":
+            console.log("Es martes");
+            break;
+            
+      case "Miércoles":
+            console.log("Es miércoles");
+            break;
+            
+      case "Jueves":
+            console.log("Es jueves");
+            break;
+            
+      case "Viernes":
+            console.log("Es viernes");
+            break;
+
+      default:
+            console.log("Es fin de semana");
+}
+```
+
+</br>
 
 
+En ocasiones puede resultar útil ejecutar el código correspondiente a varios casos para algunos casos en concreto. Para ello podemos prescindir de la sentencia `break` en los casos cuyo código deba extenderse al del siguiente caso. Vemos su uso práctico en el siguiente ejemplo:
 
+```js
+let accesoVIP = accesoPremium = AccesoBasic = "NO PERMITIDO";
 
+let categoríaSocio = "Premium";
 
+switch (categoríaSocio) {
+      case "VIP":
+            accesoVIP = "PERMITIDO";
+            
+      case "Premium":
+            accesoPremium = "PERMITIDO";
+            
+      case "Basic":
+            accesoBasic = "PERMITIDO";
+            break;
+}
+
+console.log(`Acceso a instalaciones VIP: ${accesoVIP}`)
+console.log(`Acceso a instalaciones premium: ${accesoPremium}`)
+console.log(`Acceso a instalaciones básicas: ${accesoBasic}`)
+
+//Acceso a instalaciones VIP: NO PERMITIDO
+//Acceso a instalaciones premium: PERMITIDO
+//Acceso a instalaciones básicas: PERMITIDO
+```
 
 </br></br></br></br>
 
@@ -662,14 +880,118 @@ console.log(num1, num2, num3); //10 – 20 – 30
 
 
 
-# ¿Cuál es la diferencia entre una declaración de función y una expresión de función?
+# DECLARACIONES DE FUNCIÓN VS. EXPRESIONES DE FUNCIÓN
+
+
+### SINTAXIS
+
+
+Declaración de función:
+
+```js
+function doStuff() {};
+```
+
+Expresión de función:
+
+```js
+const doStuff = function() {}
+```
+
+### NOMBRE
+
+Cuando crea una función con un nombre, esa es una declaración de función. El nombre puede omitirse en las expresiones de función, haciendo que esa función sea "anónima".
+
+
+### HOISTING
+
+Hoisting se refiere a la disponibilidad de funciones y variables "en la parte superior" de su código, en lugar de hacerlo solo después de su creación. Los objetos se inicializan en el momento de la compilación y están disponibles en cualquier parte de su archivo.
+
+Las declaraciones de funciones se elevan pero las expresiones de funciones no.
+
+Es fácil de entender con un ejemplo:
+
+doStuff();
+function doStuff() {};
+
+Lo anterior no arroja un error, pero esto sí:
+
+doStuff();
+const doStuff = () => {};
+
+
+### SCOPE
+
+Podría parecer que las declaraciones de funciones, con sus poderosas propiedades de elevación, van a superar a las expresiones de funciones en cuanto a utilidad. Pero elegir uno u otro requiere pensar en cuándo y dónde se necesita la función. Básicamente, ¿quién necesita saberlo?
+
+Las expresiones de función se invocan para evitar contaminar el ámbito global. En lugar de que su programa conozca muchas funciones diferentes, cuando las mantiene en el anonimato, se utilizan y se olvidan inmediatamente.
+
+
+### CALLBACK
+
+Una función pasada a otra función a menudo se denomina "devolución de llamada" en JavaScript. He aquí un ejemplo:
+
+```js
+function mapAction(item) {
+  // do stuff to an item
+}
+array.map(mapAction)
+array.map(mapAction)
+```
+
+El problema aquí es que mapAction estará disponible para toda su aplicación; no es necesario. Si esa devolución de llamada es una expresión de función, no estará disponible fuera de la función que la utiliza:
 
 
 
+```js
+array.map(item => { //do stuff to an item })
+
+//or
+
+const mapAction = function(item) {
+  // do stuff to an item
+}
+array.map(mapAction)
+array.map(mapAction)
+```
+
+aunque mapAction estará disponible para el código debajo de su inicialización.
 
 
 
+### RESUMEN
 
+En resumen, utilice declaraciones de funciones cuando desee crear una función en el ámbito global y hacerla disponible en todo su código. Utilice expresiones de función para limitar dónde está disponible la función, mantener su alcance global ligero y mantener una sintaxis limpia.
+
+
+
+### Using a function as a callback
+
+More commonly it is used as a callback:
+
+```js
+Copy to Clipboard
+button.addEventListener("click", function (event) {
+  console.log("button is clicked!");
+});
+```
+
+### Using an Immediately Invoked Function Expression (IIFE)
+
+An anonymous function is created and called:
+
+```js
+Copy to Clipboard
+(function () {
+  console.log("Code runs!");
+})();
+
+// or
+
+!function () {
+  console.log("Code runs!");
+}();
+```
 
 
 
