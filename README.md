@@ -7,7 +7,7 @@ TODO [¿Cuáles son algunos tipos de datos JS?](#tipos-de-datos)</br>
 [¿Cuáles son las tres funciones de String en JS?](#métodos-con-cadenas)</br>
 [¿Qué es un condicional?](#expresiones-condicionales)</br>
 [¿Qué es un operador ternario?](#operador-ternario)</br>
-TODO [¿Cuál es la diferencia entre una declaración de función y una expresión de función?](#)</br>
+[¿Cuál es la diferencia entre una declaración de función y una expresión de función?](#declaraciones-de-función-y-expresiones-de-función)</br>
 TODO [¿Qué es la palabra clave "this" en JS?](#)</br>
 
 </br></br></br></br>
@@ -880,120 +880,171 @@ console.log(num1, num2, num3); //10 – 20 – 30
 
 
 
-# DECLARACIONES DE FUNCIÓN VS. EXPRESIONES DE FUNCIÓN
+# DECLARACIONES DE FUNCIÓN Y EXPRESIONES DE FUNCIÓN
+
+Tanto las declaraciones como las expresiones de función se definen usando la palabra clave `function` y aceptan los mismos tipos de parámetros. Sin embargo, El uso de cada una de las dos formas para definir una función resulta adecuada en situaciones diferentes. 
+
+A continuación se analizan las principales diferencias que existe entre el uso de ambas en JavaScript.
+
+</br>
 
 
 ### SINTAXIS
 
+Como es lógico una de las principales diferencias es la estructura de su definición.
 
-Declaración de función:
+</br>
 
-```js
-function doStuff() {};
-```
 
-Expresión de función:
+- **DECLARACIÓN DE FUNCIÓN:** Se define de forma independiente dentro del programa.
 
 ```js
-const doStuff = function() {}
+function funciónSuma(num1, num2) {
+      return num1 + num2;
+}
+
+console.log(funciónSuma(5, 6)); //11
 ```
+
+</br>
+
+
+- **EXPRESIÓN DE FUNCIÓN:** La función es asignada a una variable en su definición.
+
+```js
+const variableSumar = function (num1, num2) {
+      return num1 + num2;
+}
+
+console.log(variableSumar(5, 6)); //11
+```
+
+</br>
+
 
 ### NOMBRE
 
-Cuando crea una función con un nombre, esa es una declaración de función. El nombre puede omitirse en las expresiones de función, haciendo que esa función sea "anónima".
+El nombre de la función nos permite hacer referencia a ella y llamarla.
+
+</br>
+
+
+- **DECLARACIÓN DE FUNCIÓN:** Una declaración de función necesita siempre de un nombre ya que es la única forma para poder llamarla dentro del programa.
+
+</br>
+
+
+- **EXPRESIÓN DE FUNCIÓN:** En una expresión de función se puede prescindir del nombre ya que va asociada a una variable. Es por ello que también suelen conocerse como funciones "anónimas" o "sin nombre".
+
+</br>
+
+
+También podemos crear una expresión de función con nombre. Esto nos permite hacer referencia a la propia función dentro de su cuerpo. Podemos verlo en el siguiente ejemplo:
+
+```js
+const variableContenedora = {
+      cuentaAtras: function descontar(n) {
+            console.log(n);
+            if (n > 1) 
+                  return descontar(n - 1);
+            
+      }
+};
+
+variableContenedora.cuentaAtras(3);
+//3
+//2
+//1
+```
+
+</br>
 
 
 ### HOISTING
 
-Hoisting se refiere a la disponibilidad de funciones y variables "en la parte superior" de su código, en lugar de hacerlo solo después de su creación. Los objetos se inicializan en el momento de la compilación y están disponibles en cualquier parte de su archivo.
+El concepto de *hoisting* o izado en JavaScript se refiere a la disponibilidad de las funciones antes de haber sido declaradas. Las funciones se inicializan en el momento de la compilación y están disponibles en cualquier parte del programa.
 
-Las declaraciones de funciones se elevan pero las expresiones de funciones no.
+</br>
 
-Es fácil de entender con un ejemplo:
 
-doStuff();
-function doStuff() {};
+- **DECLARACIÓN DE FUNCIÓN:** Se benefician del *hoisting* y por ello pueden ser llamadas antes de haber sido definidas.
 
-Lo anterior no arroja un error, pero esto sí:
+```js
+console.log(funciónSuma(5, 6)); //11
 
-doStuff();
-const doStuff = () => {};
+function funciónSuma(num1, num2) {
+      return num1 + num2;
+}
+```
+
+</br>
+
+
+- **EXPRESIÓN DE FUNCIÓN:** Al estar asociadas a una variable nunca pueden ser usadas antes de haber sido declarada la variable.
+
+```js
+console.log(variableSumar(5, 6)); //EROR!!
+
+const variableSumar = function (num1, num2) {
+      return num1 + num2;
+}
+```
+
+</br>
 
 
 ### SCOPE
 
-Podría parecer que las declaraciones de funciones, con sus poderosas propiedades de elevación, van a superar a las expresiones de funciones en cuanto a utilidad. Pero elegir uno u otro requiere pensar en cuándo y dónde se necesita la función. Básicamente, ¿quién necesita saberlo?
+El *scope* o ámbito de la función determina en qué partes del programa se pueden usar y es una de las propiedades clave que diferencia a las declaraciones de función y las expresiones de función.
 
-Las expresiones de función se invocan para evitar contaminar el ámbito global. En lugar de que su programa conozca muchas funciones diferentes, cuando las mantiene en el anonimato, se utilizan y se olvidan inmediatamente.
+</br>
+
+
+- **DECLARACIÓN DE FUNCIÓN:** Resultan idóneas para un uso en el ámbito global debido a tener un nombre y el *hoisting*. Al estar disponibles en todo el programa pueden llamarse desde cualquier punto del mismo.
+
+</br>
+
+
+- **EXPRESIÓN DE FUNCIÓN:** Su uso es muy útil para ámbitos locales en los que no se necesita que las funciones estén accesibles al resto de programa.
+
+</br>
+
+
+También puede crearse y llamarse instantáneamente a una función permaneciendo completamente anónimas para el resto del código.
+
+```js
+(function () {
+      console.log("Hola Mundo!!");
+})();
+```
+
+</br>
 
 
 ### CALLBACK
 
-Una función pasada a otra función a menudo se denomina "devolución de llamada" en JavaScript. He aquí un ejemplo:
+Una función *callback* es aquella que es pasada como argumento a otra función para que sea "llamada de nuevo" en un momento posterior. Esta otra función contiene la lógica para determinar cuándo se ejecuta la función *callback*.
+
+</br>
+
+
+- **DECLARACIÓN DE FUNCIÓN:** Debido al ámbito global de una declaración de función esta puede ser llamada desde dentro de cualquier función, por lo que no es necesario pasarla como un argumento.
+
+</br>
+
+
+- **EXPRESIÓN DE FUNCIÓN:** Normalmente la función *callback* solo debe ser llamada dentro de la función a la que es pasada por lo que resulta adecuado usar una expresión de función para ello.
+
+</br>
+
+
+El siguiente ejemplo es un uso muy común de una expresión de función como *callback* en el manejo de eventos:
 
 ```js
-function mapAction(item) {
-  // do stuff to an item
-}
-array.map(mapAction)
-array.map(mapAction)
-```
-
-El problema aquí es que mapAction estará disponible para toda su aplicación; no es necesario. Si esa devolución de llamada es una expresión de función, no estará disponible fuera de la función que la utiliza:
-
-
-
-```js
-array.map(item => { //do stuff to an item })
-
-//or
-
-const mapAction = function(item) {
-  // do stuff to an item
-}
-array.map(mapAction)
-array.map(mapAction)
-```
-
-aunque mapAction estará disponible para el código debajo de su inicialización.
-
-
-
-### RESUMEN
-
-En resumen, utilice declaraciones de funciones cuando desee crear una función en el ámbito global y hacerla disponible en todo su código. Utilice expresiones de función para limitar dónde está disponible la función, mantener su alcance global ligero y mantener una sintaxis limpia.
-
-
-
-### Using a function as a callback
-
-More commonly it is used as a callback:
-
-```js
-Copy to Clipboard
 button.addEventListener("click", function (event) {
-  console.log("button is clicked!");
+      console.log("El botón ha sido pulsado!");
 });
 ```
-
-### Using an Immediately Invoked Function Expression (IIFE)
-
-An anonymous function is created and called:
-
-```js
-Copy to Clipboard
-(function () {
-  console.log("Code runs!");
-})();
-
-// or
-
-!function () {
-  console.log("Code runs!");
-}();
-```
-
-
 
 </br></br></br></br>
 
