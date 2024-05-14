@@ -3,7 +3,7 @@
 # PREGUNTAS TEÓRICAS
 
 TODO [¿Qué diferencia a Javascript de cualquier otro lenguaje de programación?](#)</br>
-TODO [¿Cuáles son algunos tipos de datos JS?](#tipos-de-datos)</br>
+[¿Cuáles son algunos tipos de datos JS?](#tipos-de-datos)</br>
 [¿Cuáles son las tres funciones de String en JS?](#métodos-con-cadenas)</br>
 [¿Qué es un condicional?](#expresiones-condicionales)</br>
 [¿Qué es un operador ternario?](#operador-ternario)</br>
@@ -174,47 +174,77 @@ También es muy adecuado para la web porque puede establecer relaciones en tiemp
 
 # TIPOS DE DATOS
 
-Todos los lenguajes de programación tienen estructuras de datos integradas, pero estas a menudo difieren de un lenguaje a otro. Las estructuras de datos integradas disponibles en JavaScript y las propiedades que tienen. Estas se pueden utilizar para construir otras estructuras de datos. 
+En JavaScript las variables pueden contener datos de cualquiera tipo y es por ello que no se necesita asignar un tipo de valor de antemano. Además, estas pueden cambiar el tipo de dato contenido de forma dinámica.
 
-Constructores!!
+```js
+let variable;
 
-Tipado dinámico
+variable = false;
+variable = 23;
+variable = "Manzana";
+variable = null;
+```
 
-JavaScript es un lenguaje débilmente tipado y dinámico. Las variables en JavaScript no están asociadas directamente con ningún tipo de valor en particular, y a cualquier variable se le puede asignar (y reasignar) valores de todos los tipos.
-
-Hay básicamente nueve estructuras y tipos de datos a nuestra disposición en JavaScript y son las siguientes:
-
-
-Seis tipos de datos primitivos, controlados por el operador typeof ???
-
-Undefined
-
-Boolean
-
-Number
-
-String
-
-BigInt
-
-Symbol
-
-Null
-
-Object
-
-Function
+</br>
 
 
+Sin embargo, los tipos de datos de JavaScript definen valores inmutables y no pueden alterarse a no ser que sean reasignados. Estos tipos de datos se conocen como *Primitive Values* o valores primitivos.
+
+</br>
 
 
+Hay básicamente siete tipos de datos a nuestra disposición en JavaScript y son los siguientes:
+
+- Undefined
+- Boolean
+- Number
+- String
+- BigInt
+- Symbol
+- Null
+
+</br>
 
 
+Para conocer el tipo de dato de una variable podemos usar `typeof`.
+
+```js
+console.log(typeof undefined); //undefined
+
+console.log(typeof true); //boolean
+
+console.log(typeof 1.25); //number
+
+console.log(typeof "Hola Mundo"); //string
+
+console.log(typeof 99999n); //bigint
+
+console.log(typeof Symbol()); //symbol
+
+console.log(typeof null); //object
+```
+
+</br>
 
 
+### TIPO UNDEFINED
 
-Valores primitivos
-Todos los tipos, excepto los objetos, definen valores inmutables (es decir, valores que no se pueden cambiar). Por ejemplo (y a diferencia de C), las cadenas son inmutables. Nos referimos a los valores de estos tipos como "valores primitivos".
+Una variable a la que no se le ha asignado ningún valor es del tipo Undefined y su valor es `undefined`.
+
+También podemos asignar explícitamente el valor `undefined` a la variable para darle este tipo. 
+
+```js
+let nota;
+console.log(nota); //undefined
+
+let asistentes = undefined;
+console.log(asistentes); //undefined
+```
+
+</br>
+
+
+Cabe destacar que el valor `""` convierte la variable en tipo String y no en Undefined. 
 
 </br>
 
@@ -224,7 +254,134 @@ Todos los tipos, excepto los objetos, definen valores inmutables (es decir, valo
 Boolean representa una entidad lógica y puede tener dos valores: `true` y `false`. Estos dos valores equivalen a "sí" y "no", "se cumple" y "no se cumple", y son mayormente usados en estructuras condicionales.
 
 ```js
+valorVerdadero = true;
+valorFalso = false;
+```
 
+</br>
+
+
+### TIPO NUMBER
+
+El tipo Number es uno de los dos tipos numéricos disponibles en JavaScript: Number y BigInt.
+
+A diferencia de otros lenguajes de programación en JavaScript no existen los tipos numéricos Int y Float por separado, ambos se incluyen en el tipo Number.
+
+```js
+numeroUno = 78;
+numeroDos = 1.238;
+```
+
+</br>
+
+
+El tipo Number también puede tomar los valores especiales `+Infinity`, `-Infinity` y `NaN`. El valor `NaN` significa *Not a Number* y representa que el valor no es un número.
+
+```js
+valorMuyAlto = +Infinity;
+valorMuyBajo = -Infinity;
+
+console.log(53 - "azul"); //NaN
+```
+
+</br>
+
+
+Para comprobar los valores máximos y mínimos que el tipo Number puede representar podemos usar `MAX_VALUE` y `MIN_VALUE`.
+
+```js
+console.log(Number.MAX_VALUE); //1.7976931348623157e+308
+console.log(Number.MIN_VALUE); //5e-324
+```
+
+</br>
+
+
+### TIPO STRING
+
+El tipo String o cadena se utiliza para representar datos textuales y, a diferencia de otros lenguajes de programación, en JavaScript son inmutables. Esto significa que una vez que se crea una cadena esta no puede ser modificarla y por ello debe ser reasignada para cambiar su valor.
+
+Cada elemento de la cadena ocupa una posición determinada por un índice que comienza a partir del valor 0 para el primer elemento. La longitud de una cadena es el número de elementos que contiene.
+
+Podemos usar comillas simples, comillas dobles y tildes invertidas para definir una cadena en JavaScript.
+
+```js
+cadena1 = 'Hola Mundo';
+cadena2 = "Hola Mundo";
+cadena3 = `Hola Mundo`;
+```
+
+</br>
+
+
+Sin embargo, el usar tildes invertidas para definir una cadena proporciona una funcionalidad extendida y permite intercalar variables y expresiones dentro de la cadena usando `${}`.
+
+```js
+cantidadPiezas = 5;
+
+console.log(`Quedan ${cantidadPiezas} piezas`) //Quedan 5 piezas
+```
+
+</br>
+
+
+
+### TIPO BIGINT
+
+El tipo BigInt es uno de los dos tipos numéricos disponibles en JavaScript: Number y BigInt.
+
+Un BigInt se define agregando `n` al final de un número entero.
+
+```js
+enteroMuyGrande = 8258725862387289285728n;
+console.log(typeof enteroMuyGrande); //bigint
+```
+
+</br>
+
+El valor `9007199254740992` es el entero más alto que puede representarse con un tipo de dato Number. Para trabajar de forma segura con valores mayores debemos usar el tipo BigInt.
+
+```js
+console.log(9007199254740992 === 9007199254740993); //true
+
+console.log(9007199254740992n === 9007199254740993n); //false
+```
+
+</br>
+
+
+Cabe mencionar que los números de tipo BigInt no se pueden utilizar indistintamente con los de tipo Number.
+
+```js
+console.log(9007199254740993n + 2); //ERROR!!
+```
+
+</br>
+
+
+### TIPO SYMBOL
+
+Un dato de tipo Symbol o símbolo representa un valor único. Esto quiere decir que cada vez que creamos uno nuevo este es completamente diferente a cualquier otro símbolo.
+
+```js
+const simboloUno = Symbol();
+const simboloDos = Symbol();
+
+simboloUno === simboloDos; //false
+```
+
+</br>
+
+
+Los símbolos se utilizan principalmente para crear propiedades de objetos privadas o para crear una forma de nombrar eventos de forma única. Sirven para asegurarnos que creamos una referencia única que nunca entrará en conflicto con otra.
+
+Si se quiere tener control sobre el símbolo creado podemos utilizar `Symbol.for()` y pasar una cadena clave como argumento. Todo símbolo creado a partir de esa cadena clave será idéntico.
+
+```js
+const simboloUno = Symbol.for("cadena clave");
+const simboloDos = Symbol.for("cadena clave");
+
+simboloUno === simboloDos; //true
 ```
 
 </br>
@@ -236,126 +393,11 @@ El tipo Null representa la ausencia intencional de cualquier valor de objeto y t
 
 En operaciones booleanas el valor `null` se entiende como `false`.
 
-También cabe mencionar que si un objeto no se hereda de otro, se muestra en valor `null`.
-
 ```js
-if
+respuesta = null;
+
+console.log(respuesta ? "Hay respuesta" : "No hay respuesta"); //No hay respuesta
 ```
-
-</br>
-
-
-### TIPO UNDEFINED
-
-Una variable a la que no se le ha asignado ningún valor es del tipo `undefined` y su valor es `undefined`.
-
-También podemos asignar explícitamente el valor `undefined` a la variable para darle este tipo. 
-
-```js
-let car;    // Value is undefined, type is undefined
-
-car = undefined;    // Value is undefined, type is undefined
-```
-Cabe destacar que el valor `""` convierte la variable en tipo `string` y no en `undefined`. 
-
-</br>
-
-
-### TIPO NUMBER
-
-El tipo `number` es uno de los dos tipos numéricos disponibles en JavaScript: `number` y `BigInt`.
-
-A diferencia de otros lenguajes de programación en JavaScript no existen los tipos numéricos `int` y `float` por separado, ambos se incluyen en el tipo `number`. 
-
-Se trata de un valor en formato binario de 64 bits de doble precisión (números entre -(253e-1) y 253e-1). Además de representar números de punto flotante, el tipo Number tiene tres valores simbólicos: +Infinity, -Infinity y NaN ("Not a Number" o No es un número).
-
-
-
-Para verificar el valor disponible más grande o el valor más pequeño disponible dentro de ±Infinity, puedes usar las constantes Number.MAX_VALUE o Number.MIN_VALUE.
-
-Nota: A partir de ECMAScript 2015, también puedes comprobar si un número está en el rango de números de punto flotante de doble precisión mediante Number.isSafeInteger() así como Number.MAX_SAFE_INTEGER y Number.MIN_SAFE_INTEGER.Más allá de este rango, los enteros en JavaScript ya no son seguros y serán una aproximación de punto flotante de doble precisión del valor.
-El tipo number solo tiene un entero con dos representaciones: 0 se representa como -0 y +0. (0 es un alias de +0).
-
-</br>
-
-
-### TIPO BIGINT
-
-El tipo BigInt es un primitivo numérico en JavaScript que puede representar números enteros con precisión arbitraria. Con BigInts, puedes almacenar y operar de forma segura en números enteros grandes incluso más allá del límite seguro de enteros para Numbers.
-
-Un BigInt se crea agregando `n` al final de un número entero o haciendo una llamando al constructor.
-
-Puedes obtener el valor más seguro que se puede incrementar con Numbers utilizando la constante Number.MAX_SAFE_INTEGER. Con la introducción de BigInts, puedes operar con números más allá de Number.MAX_SAFE_INTEGER.
-
-Este ejemplo demuestra, dónde, incrementando el Number.MAX_SAFE_INTEGER devuelve el resultado esperado:
-
-```js
-> const x = 2n ** 53n;
-9007199254740992n
-> const y = x + 1n;
-9007199254740993n
-```
-
-Los BigInt no se pueden utilizar indistintamente con los Number. En su lugar, se lanzará un TypeError.
-
-</br>
-
-
-### TIPO STRING
-
-El tipo String de JavaScript se utiliza para representar datos textuales. Es un conjunto de "elementos" de valores enteros sin signo de 16 bits. Cada elemento del String ocupa una posición en la cadena. El primer elemento está en el índice 0, el siguiente en el índice 1, y así sucesivamente. La longitud de una cadena es el número de elementos que contiene.
-
-A diferencia de algunos lenguajes de programación (tal como C), las cadenas de JavaScript son inmutables. Esto significa que una vez que se crea una cadena, no es posible modificarla.
-
-Sin embargo, todavía es posible crear otra cadena basada en una operación en la cadena original. Por ejemplo:
-
-Una subcadena de la original seleccionando letras individuales o usando String.substr().
-Una concatenación de dos cadenas usando el operador de concatenación (+) o String.concat().
-¡Ten cuidado de no "convertir a cadenas" tu código!
-
-Puede resultar tentador utilizar cadenas para representar datos complejos. Hacer esto viene con beneficios a corto plazo:
-
-Es fácil construir cadenas complejas con concatenación.
-Las cadenas son fáciles de depurar (lo que ves impreso siempre es lo que está en la cadena).
-Las cadenas son el denominador común de muchas APIs (campos de entrada —inputs—, valores de almacenamiento local, respuestas XMLHttpRequest cuando se usa responseText, etc.) y puede resultar tentador trabajar solo con cadenas.
-Con las convenciones, es posible representar cualquier estructura de datos en una cadena. Esto no la convierte en una buena idea. Por ejemplo, con un separador, se podría emular una lista (mientras que un arreglo de JavaScript sería más adecuado). Desafortunadamente, cuando el separador se usa en uno de los elementos de la "lista", la lista se rompe. Se puede elegir un caracter de escape, etc. Todo esto requiere convenciones y crea una innecesaria carga de mantenimiento.
-
-Utiliza cadenas para datos textuales. Cuando quieras representar datos complejos, procesa las cadenas y usa la abstracción adecuada.
-
-</br>
-
-
-### TIPO SYMBOL
-
-Un símbolo es un valor primitivo único e inmutable y se puede utilizar como clave de una propiedad de objeto (ve más abajo). En algunos lenguajes de programación, los símbolos se denominan "átomos".
-
-Para obtener más detalles, consulta Symbol y el contenedor de objetos Symbol en JavaScript.
-
-</br>
-
-
-### OBJETOS
-
-En ciencias de la computación, un objeto es un valor en la memoria al que posiblemente hace referencia un identificador.
-
-Propiedades
-En JavaScript, los objetos se pueden ver como una colección de propiedades. Con la sintaxis de objeto literal, se inicia un conjunto limitado de propiedades; luego se pueden agregar y eliminar propiedades. Los valores de propiedad pueden ser valores de cualquier tipo, incluidos otros objetos, lo que permite construir estructuras de datos complejas. Las propiedades se identifican mediante valores clave. Un valor clave es un valor de cadena o un símbolo.
-
-Hay dos tipos de propiedades de objeto que tienen ciertos atributos: la propiedad data y la propiedad accessor.
-
-Nota: Cada propiedad tiene atributos correspondientes. Los atributos, internamente los utiliza el motor JavaScript, por lo que no puedes acceder a ellos directamente. Es por eso que los atributos se enumeran entre corchetes dobles, en lugar de simples.Consulta Object.defineProperty() para obtener más información.
-
-Tipo estructural especial que no es de datos pero para cualquier instancia de objeto construido que también se utiliza como estructuras de datos: new Object, new Array, new Map, new Set, new WeakMap, new WeakSet, new Date y casi todo lo hecho con la palabra clave new;
-
-Ten en cuenta que el único propósito valioso del uso del operador typeof es verificar el tipo de dato. Si deseamos verificar cualquier Tipo Estructural derivado de Object, no tiene sentido usar typeof para eso, ya que siempre recibiremos "object". La forma correcta de comprobar qué tipo de Objeto estamos usando es la palabra clave instanceof. Pero incluso en ese caso, puede haber conceptos erróneos.
-
-</br>
-
-
-### FUNCIONES
-
-una estructura sin datos, aunque también responde al operador typeof: typeof instance === "function". Esta simplemente es una forma abreviada para funciones, aunque cada constructor de funciones se deriva del constructor Object.
-
 
 </br></br></br></br>
 
@@ -983,7 +1025,7 @@ function funciónSuma(num1, num2) {
 - **EXPRESIÓN DE FUNCIÓN:** Al estar asociadas a una variable nunca pueden ser usadas antes de haber sido declarada la variable.
 
 ```js
-console.log(variableSumar(5, 6)); //EROR!!
+console.log(variableSumar(5, 6)); //ERROR!!
 
 const variableSumar = function (num1, num2) {
       return num1 + num2;
@@ -1051,9 +1093,35 @@ button.addEventListener("click", function (event) {
 
 
 
-# ¿Qué es la palabra clave "this" en JS?
+# PALABRA CLAVE THIS
 
 
+
+La palabra clave `this` se puede usar dentro de una función de JavaScript y normalmente hace referencia al propio objeto en el cual se ha invocado la función.
+
+Depende del contexto en el que se invoque la función.
+
+
+> La palabra clave this de una función se comporta un poco diferente en Javascript en comparación con otros lenguajes. Además tiene algunas diferencias entre el modo estricto y el modo no estricto.
+
+> En general, el valor de this está determinado por cómo se invoca a la función. No puede ser establecida mediante una asignación en tiempo de ejecución, y puede ser diferente cada vez que la función es invocada
+
+
+### CONTEXTO GLOBAL
+
+window
+
+
+### CONTEXTO GLOBAL
+
+
+
+
+### CONSTRUCTORES
+
+
+
+arrow function ventajas
 
 
 
