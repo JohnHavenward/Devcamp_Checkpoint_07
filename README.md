@@ -2,13 +2,13 @@
 
 # PREGUNTAS TEÓRICAS
 
-TODO [¿Qué diferencia a Javascript de cualquier otro lenguaje de programación?](#)</br>
+[¿Qué diferencia a Javascript de cualquier otro lenguaje de programación?](#lenguaje-javascript)</br>
 [¿Cuáles son algunos tipos de datos JS?](#tipos-de-datos)</br>
 [¿Cuáles son las tres funciones de String en JS?](#métodos-con-cadenas)</br>
 [¿Qué es un condicional?](#expresiones-condicionales)</br>
 [¿Qué es un operador ternario?](#operador-ternario)</br>
 [¿Cuál es la diferencia entre una declaración de función y una expresión de función?](#declaraciones-de-función-y-expresiones-de-función)</br>
-TODO [¿Qué es la palabra clave "this" en JS?](#)</br>
+TODO [¿Qué es la palabra clave "this" en JS?](#palabra-clave-this)</br>
 
 </br></br></br></br>
 
@@ -16,156 +16,78 @@ TODO [¿Qué es la palabra clave "this" en JS?](#)</br>
 
 
 
-# ¿Qué diferencia a Javascript de cualquier otro lenguaje de programación?
+# LENGUAJE JAVASCRIPT
 
+JavaScript, abreviado como JS, es un lenguaje de programación con capacidad para dar vida a aplicaciones en línea, generar experiencias de usuario dinámicas y funcionar en varias plataformas. Admite dos paradigmas de programación: funcional y orientado a objetos. Su uso está muy extendido y está en constante evolución y desarrollo.
 
-
- 
-
-
-![Developer](/images/developer.jpg)
 ![JavaScript logo](/images/javascript_logo.png)
+
+</br>
+
+
+Pese a que JavaScript guarda parecidos con otros lenguajes de programación, tiene una serie de cualidades especiales que lo hacen destacar del resto. Estas son las principales:
+
+- Rapidez de ejecución
+- Predominio en la web
+- Versatilidad
+- Popularidad
+
+</br>
+
+
+### RAPIDEZ DE EJECUCIÓN
+
+JavaScript es un lenguaje "interpretado" y no uno "compilado". La mayoría del resto de lenguajes de programación son compilados y eso implica que deben ser compilados en código de máquina como paso previo a ser ejecutados. Por su parte, los lenguajes "interpretados" no necesitan de ese paso y pueden ser ejecutados directamente reduciendo dramáticamente el tiempo necesario para su ejecución.
+
+Su naturaleza interpretada permite que JavaScript pueda ser ejecutado directamente por cualquier navegador web y además hacerlo de una forma rápida y sin esperas.
+
+Otro factor que favorece esta celeridad es que JavaScript es un lenguaje basado en eventos. Esto implica que por muy extenso que sea el código solo se ejecuta cada bloque cuando ha ocurrido el evento correspondiente. Como resultado, cuando se carga un sitio web no es necesario inicializar la totalidad del código, sino el estrictamente necesario. El resto se irá cargando en función de las interacciones del usuario.
+
+</br>
+
+
+### PREDOMINIO EN LA WEB
+
+JavaScript es el lenguaje de programación del lado del cliente dominante en la web y es usado prácticamente por la totalidad de los sitios web existentes. La principal razón de ello es que JavaScript puede ejecutarse directamente en un navegador y no solo en un servidor.
+
+Los sitios web modernos usan HTML, CSS y JS para el desarrollo front-end. Estos son los únicos lenguajes de codificación que los navegadores reconocen de forma nativa y cada uno maneja un aspecto diferente del desarrollo web. JavaScript se encarga de hacer que los sitios y aplicaciones web sean dinámicos e interactivos. También ofrece a los desarrolladores una variedad de herramientas muy útiles para crear interfaces atractivas y con animaciones.
+
+Otra razón por la que JavaScript está tan consolidado como lenguaje del lado del cliente es por su capacidad para comunicarse con un servidor. Algunas de sus funciones más potentes son las que crean interacciones asíncronas con un servidor remoto y permiten hacerlo en segundo plano sin interrumpir la interacción del usuario.
+
+</br>
+
+
+### VERSATILIDAD
+
+La versatilidad de JavaScript es una de sus cualidades más valiosas. Se trata de un lenguaje de programación potente y flexible ampliamente utilizado para el desarrollo de todo tipo de software. Podemos verlo en el desarrollo web front-end, back-end, aplicaciones móviles, aplicaciones de escritorio e incluso en el de placas Arduino.
+
+Podemos ver a continuación una tabla comparando las capacidades de desarrollo de varios de los lenguajes de programación más importantes:
+
 ![Programming language capabilities comparing table](/images/language_comparing.png)
 
-
-No existe un lenguaje de programación perfecto. Por lo tanto, un nuevo idioma gana popularidad cada pocos años para satisfacer las necesidades de la época. Por ejemplo, el lenguaje de programación C dominó la década de 1990 y tuvo poca competencia durante un tiempo. Más tarde, a medida que el tiempo y la demanda de la comunidad cambiaron, Python ganó popularidad debido a sus grandes beneficios sobre C y, finalmente, JavaScript subió al escenario. Ahora todo el mundo parece estar hablando de la tecnología innovadora conocida como JavaScript. Esta publicación habla sobre las desventajas y ventajas de JavaScript.
-
-
-Ventajas de JavaScript
-Comencemos con los beneficios de JavaScript que lo hacen superior a otros lenguajes de programación.
-
-Velocidad
-Reduce la carga en el servidor.
-Facilidad de uso
-Interfaz rica
-Versatilidad
-Funcionalidad extendida
-Interoperabilidad
-Popularidad
-Independencia de plataforma
-Marcos potentes
-Funciones de programación procesal
-Respuesta a la actividad del usuario.
-Actualizaciones
-
-Velocidad
-JavaScript es un lenguaje "interpretado", por lo que reduce el tiempo necesario para la compilación en otros lenguajes como Java. Además, es un script del lado del cliente que acorta el tiempo necesario para establecer una conexión con el servidor, lo que acelera la ejecución del programa.
-
-Reduce la carga en el servidor
-El lenguaje se ejecuta en el lado del cliente en lugar del servidor. Por lo tanto, el servidor no tiene que lidiar con el estrés de ejecutar JavaScript. Una vez que se reduzca esta carga, el servidor funcionará más rápidamente y se concentrará en otras tareas como la gestión de datos.
-
-Facilidad de uso
-JavaScript es uno de los lenguajes más sencillos de aprender, especialmente para la programación web. Ha sido diseñado para que sea sencillo de entender y utilizar para los desarrolladores web. Dado que los lenguajes difíciles requieren menos ingenieros y exigen un presupuesto más alto, esto ayuda a las empresas web a ahorrar mucho dinero en desarrollo.
-
-Interfaz rica
-JavaScript ofrece a los desarrolladores una variedad de interfaces para crear sitios web atractivos. Los sitios web con elementos o controles deslizantes de arrastrar y soltar pueden tener una experiencia de usuario más sólida. Esto aumenta la interacción del usuario con el sitio web.
-
-Versátil
-La versatilidad de JavaScript es su cualidad más valiosa. Hay muchas formas diferentes de integrarlo en su sitio web. Dado que Node.js se integra eficazmente con MongoDB y MySQL, no solo puede construir y terminar el front-end del sitio web sino también manejar su back-end.
-
-Funcionalidad extendida
-Para ahorrar tiempo y dinero, complementos de terceros como Greasemonkey (una extensión de Mozilla Firefox) permiten a los desarrolladores incorporar pequeñas secciones de código prefabricado en su código. Estos complementos hacen que a los desarrolladores les resulte más fácil y rápido crear aplicaciones JavaScript que con otros lenguajes de codificación.
-
-Interoperabilidad
-JavaScript se integra perfectamente con otros lenguajes de programación, por lo que muchos desarrolladores prefieren usarlo para crear varias aplicaciones. Cualquier página web o script de otro lenguaje informático puede incorporarlo.
-
-Popularidad
-JavaScript es uno de los lenguajes más populares para el desarrollo web. Es un factor importante para todo sitio web que funcione. Incluso los sitios web más populares del mundo, incluidos Amazon y Google, utilizan JavaScript, ya que se considera una tecnología muy poderosa. Debido a su creciente popularidad, ahora es más sencillo que nunca aprender este idioma en línea a través de varios cursos.
-
-Plataforma independiente
-La mayoría de los navegadores admiten JavaScript, lo que facilita que cualquier navegador comprenda y reconozca el código JavaScript. No es necesario realizar ningún procedimiento de instalación o configuración porque es una tecnología fácilmente disponible. Simplemente use su navegador para crear varias zonas de edición de páginas web.
-
-JavaScript tiene marcos potentes
-En torno a JavaScript, muchos marcos de comando muestran códigos listos para usar. Todos estos códigos son fáciles de comprender y solucionar problemas. Dependiendo de la estructura en cuestión, tendrás acceso a varias capacidades adicionales que aumentarán exponencialmente tu eficiencia.
-
-JavaScript proporciona funciones de programación de procedimientos
-A pesar de ser fácil de aprender, el lenguaje tiene todas las características que lo convierten en un lenguaje de programación popular e importante. JavaScript le permite crear ramas, iniciar comprobaciones condicionales, iniciar bucles y mucho más, lo que hace que usar su sitio web sea mucho más divertido.
-
-Los códigos JavaScript se activan en respuesta a la actividad del usuario
-JavaScript es un lenguaje de codificación basado en eventos. Esto significa que se ejecutan varios segmentos de código después de que un usuario hace clic en un botón. Como resultado, cuando se carga el sitio web, no se inicializa nada del código. Al hacer esto, puede estar seguro de que el tiempo de carga de su sitio web no estará en riesgo al cargarlo con funciones de alta gama.
-
-Actualizaciones
-Desde el lanzamiento de ECMAScript 5, la especificación de secuencias de comandos en la que se basa JavaScript, ECMA International ha priorizado la actualización de JavaScript anualmente. Se han lanzado 13 ediciones de funciones desde 1997. La familia JavaScript ahora incluye las funciones ES2022 que han pasado la verificación de la etapa 4.
-
-Desventajas de JavaScript
-No siempre es la mejor práctica utilizar JavaScript al desarrollar aplicaciones en línea. En muchas circunstancias, es posible que JavaScript no funcione tan bien como algunos de los otros lenguajes. Los problemas con JavaScript se han analizado brevemente en esta sección.
-
-Seguridad del lado del cliente
-Instalaciones de depuración
-Soporte del navegador
-función bit a bit
-Problemas de renderizado
-
-Seguridad del lado del cliente
-Dado que el usuario puede ver el código JavaScript, otros podrían hacer un mal uso de él. Estas acciones pueden implicar el uso del código fuente de forma anónima. Además, es relativamente sencillo insertar código en el sitio web que ponga en peligro la seguridad de los datos transmitidos a través del sitio web.
-
-Instalaciones de depuración insuficientes
-Si bien algunos editores HTML brindan depuración, son menos eficientes que los editores C o C++. Además, como el navegador no proporciona ningún error, el desarrollador tiene problemas para identificar el problema.
-
-Soporte del navegador
-Cada navegador interpreta JavaScript de forma diferente. Por lo tanto, el código debe ejecutarse en una variedad de sistemas antes de ser publicado. Dado que no admiten algunas funciones nuevas, también debemos fijarnos en los navegadores más antiguos.
-
-Función bit a bit lenta
-JavaScript opera con operandos bit a bit de 32 bits y almacena números como números de punto flotante de 64 bits. JavaScript realiza operaciones en los enteros con signo de 32 bits antes de convertirlos nuevamente a números de JavaScript de 64 bits. El proceso de convertir un número a un número entero continuamente requiere más tiempo. Como resultado, el script se ejecuta más lento y requiere más tiempo para ejecutarse.
-
-Problemas de renderizado
-Todo el código JavaScript del sitio web puede dejar de procesarse debido a un único error en el código. Al usuario le parece como si JavaScript estuviera ausente. Los navegadores, sin embargo, son muy tolerantes con estos errores.
-
-Conclusión
-Cada lenguaje de programación tiene sus pros y sus contras, al igual que JavaScript. Siempre puedes utilizar el lenguaje a tu favor, pero siempre habrá algunas deficiencias. Es mejor comprender las desventajas del lenguaje que utiliza para evitar errores en su proyecto.
+</br>
 
 
+Además, JavaScript se integra perfectamente con otros lenguajes de programación. Esta es la razón por la que muchos desarrolladores prefieren usarlo para crear aplicaciones que posteriormente tengan que comunicarse o ser integradas en otros lenguajes informáticos.
+
+Por último, cabe destacar un aspecto negativo respecto a la versatilidad de uso de JavaScript y es que los diferentes navegadores web y dispositivos lo interpretan de forma diferente. Por lo tanto, el código debe ser ejecutado y probado en una variedad de sistemas durante su desarrollo y tener en cuenta los más antiguos que no pueden ser actualizados.
 
 
+</br>
 
 
-> La mayoría de los lenguajes de programación son compilados, lo que significa que el código debe compilarse en código de máquina antes de poder ejecutarse. Por otro lado, JavaScript es un lenguaje interpretado, lo que significa que no es necesario compilarlo antes de poder ejecutarlo.
+### POPULARIDAD
 
-> JavaScript es el lenguaje de secuencias de comandos del lado del cliente dominante en la Web y el 99% de todos los sitios web lo utilizan para este propósito. Los scripts están incrustados o incluidos en documentos HTML e interactúan con el DOM. Todos los principales navegadores web tienen un motor JavaScript integrado que ejecuta el código en el dispositivo del usuario.
+Hay dos factores principales por los que JavaScript ha cosechado una gran popularidad: da vida a la web y es fácil de aprender.
 
-> Han surgido tres lenguajes para manejar diferentes aspectos de los sitios web front-end modernos: HTML, CSS y JavaScript. Estos son los únicos lenguajes de codificación que los navegadores reconocen de forma nativa y, dado que cada uno maneja un aspecto diferente del desarrollo web, realmente necesitas conocer los tres. 
+![Developer](/images/developer.jpg)
 
-> JavaScript (JS) es un lenguaje de programación informático que se utiliza para hacer que los sitios web y las aplicaciones sean dinámicos e interactivos. Es único porque puede ejecutarse directamente en su navegador, no sólo en un servidor.
-
-> Creo que hay tres diferencias fundamentales:
-
-Admite dos paradigmas de programación: funcional y orientado a objetos.
-
-Es omnipresente. Puede encontrarlo en el navegador, en el servidor (Node.js), en las placas Arduino, básicamente en todas partes.
-
-El modelo de herencia de JavaScript, a diferencia de otros lenguajes, es prototípico. Compare eso con los lenguajes OOP clásicos de herencia basada en clases entre padres e hijos, como el soporte de Java. Esto lo hace muy flexible, permite herencia múltiple a través de mixins y también es muy fácil de usar. Tiene una barrera de entrada baja y el ecosistema de herramientas está creciendo muy rápidamente.
-
-Sobre el tema de la herencia, me gustaría decir que llamar a un método en un objeto JavaScript es tan simple como buscar ese método en el diccionario. Obtienes encapsulación y polimorfismo básicamente gratis, con OO prototipo.
-
-También es muy adecuado para la web porque puede establecer relaciones en tiempo de ejecución, ya que crear una nueva instancia básicamente significa realizar una copia profunda de un objeto y todas sus propiedades.
-
-> Podría decirse que JavaScript es uno de los lenguajes de programación más fáciles de aprender, por lo que sirve como un excelente primer lenguaje para cualquiera que sea nuevo en la codificación. Incluso las líneas más complejas de código JavaScript se pueden escribir una por una, en fragmentos. También se puede probar en el navegador web al mismo tiempo.
-
-> Javascript syntax is similar to C programming language
-
-> JavaScript, abreviado como JS, es un lenguaje de programación flexible y ampliamente utilizado que sigue siendo popular durante décadas. Su atractivo surge de su capacidad para dar vida a aplicaciones en línea, generar experiencias de usuario dinámicas y funcionar en varias plataformas.
-
-> A pesar de su versatilidad, JavaScript presenta algunas desventajas, incluidas vulnerabilidades de seguridad como ataques de secuencias de comandos entre sitios (XSS), limitaciones de rendimiento debido a la ejecución de un solo subproceso e inconsistencias entre diferentes navegadores, lo que requiere pruebas exhaustivas y esfuerzos de optimización.
-
->Si bien JavaScript es un lenguaje del lado del cliente, algunas de sus funciones más potentes implican una interacción asincrónica con un servidor remoto. Asíncrono simplemente significa que JavaScript puede comunicarse con el servidor en segundo plano sin interrumpir la interacción del usuario que tiene lugar en primer plano.
-
-> En el panorama del desarrollo web que avanza rápidamente, dominar JavaScript nunca ha sido más vital que en 2024. A medida que el mundo digital evoluciona, Javascript continúa siendo la columna vertebral del desarrollo web, impulsando la interactividad y la funcionalidad dinámica en todos los sitios web y aplicaciones.
-
-> Lack of multi-threading. JavaScript is a single-threaded language, only one piece of code can be run simultaneously.
-
-> JavaScript también es un lenguaje débilmente tipado, lo que significa que el lenguaje le permite realizar operaciones entre diferentes tipos de datos sin convertirlos explícitamente. En el ejemplo anterior, tenemos un número 5 almacenado en la variable num y una cadena "10" almacenada en la variable str.
-
-> Java crea aplicaciones que se ejecutan en una máquina virtual o en un navegador, mientras que el código JavaScript se ejecuta únicamente en un navegador. El código Java debe compilarse, mientras que el código JavaScript está todo en texto. Requieren diferentes complementos.
-
-> En conclusión, JavaScript es un lenguaje potente y versátil que ofrece muchas ventajas sobre otros lenguajes de programación. Su naturaleza interpretada hace que sea fácil trabajar con él y su diseño orientado a objetos permite a los desarrolladores crear programas complejos de forma rápida y sencilla.
-
-> En resumen, las ventajas de JavaScript incluyen su capacidad para crear experiencias web dinámicas e interactivas, soporte generalizado, ecosistema sólido y flexibilidad para el desarrollo del lado del cliente y del servidor, lo que lo convierte en un lenguaje esencial en el desarrollo web moderno.
-
-> Python simplifica la lectura y el mantenimiento del código. Debido a su flexibilidad, Javascript no proporciona fácil lectura ni mantenimiento del código.
+</br>
 
 
+Por un lado, a medida que el mundo digital evoluciona, Javascript continúa siendo la columna vertebral del desarrollo web. Impulsa la creación de sitios y aplicaciones web que tienen interfaces interactivas, dinámicas y atractivas que son capaces de proporcionar una experiencia de usuario muy positiva.
 
-
+Por otro, JavaScript es uno de los lenguajes de programación más fáciles de aprender, especialmente para la programación web, y ha sido diseñado para que sea sencillo de entender y utilizar. Tiene una barrera de entrada baja y la disponibilidad de recursos y herramientas de aprendizaje es cada vez mayor.
 
 </br></br></br></br>
 
@@ -1095,6 +1017,9 @@ button.addEventListener("click", function (event) {
 
 # PALABRA CLAVE THIS
 
+> “This” keyword refers to an object that is executing the current piece of code. It references the object that is executing the current function. If the function being referenced is a regular function, “this” references the global object.
+
+> If the function that is being referenced is a method in an object, “this” references the object itself.
 
 
 La palabra clave `this` se puede usar dentro de una función de JavaScript y normalmente hace referencia al propio objeto en el cual se ha invocado la función.
@@ -1107,18 +1032,83 @@ Depende del contexto en el que se invoque la función.
 > En general, el valor de this está determinado por cómo se invoca a la función. No puede ser establecida mediante una asignación en tiempo de ejecución, y puede ser diferente cada vez que la función es invocada
 
 
-### CONTEXTO GLOBAL
+### CONTEXTO GLOBAL
 
 window
 
 
-### CONTEXTO GLOBAL
+
+### FUNCIONES
+
+Cuando `this` está definido dentro de una función el objeto al que hace referencia depende del contexto en el que la función es llamada.
+
+- Global
+- Objeto
+- Constructor
+
+### CONTEXTO OBJETO
+
+Claramente, en el fragmento anterior, la función foo() se llama en el contexto del objeto obj, por lo tanto this ahora hace referencia a obj. Entonces, cuando se llama a una función con un objeto de contexto, la referencia  this se vincula a dicho objeto.
+
+```js
+function foo() {
+  this.a = 2;
+}
+
+const obj = {
+  foo: foo
+};
+
+obj.foo();
+console.log(obj.a); // 2
+```
+
+
+Referencia inmediata
+
+```js
+var o = { prop: 37 };
+
+function independent() {
+  return this.prop;
+}
+
+o.f = independent;
+
+console.log(o.f()); // logs 37
+```
+
+Esto demuestra que sólo importa que la función fue invocada del elemento f de o.
+
+Asimismo, el enlace this sólo se ve afectado por la referencia del miembro más inmediata. En el siguiente ejemplo, cuando invocamos a la función, lo llamamos como metodo g del objeto o.b. Esta vez durante la ejecución, this dentro de la función se referirá a o.b. El hecho de que el objeto es en sí mismo un elemento de o no tiene ninguna consecuencia, la referencia más inmediata es todo lo que importa.
+
+```js
+o.b = { g: independent, prop: 42 };
+console.log(o.b.g()); // logs 42
+```
 
 
 
 
-### CONSTRUCTORES
 
+
+### CONSTRUCTORES
+
+Cuando usamos `this` dentro de un constructor este hace referencia al nuevo objeto creado mediante la palabra clave `new`.
+
+```js
+class Rectángulo {
+      constructor(alto, ancho) {
+            this.alto = alto;
+            this.ancho = ancho;
+      }
+};
+
+const miRectángulo = new Rectángulo(3, 7);
+
+console.log(`Rectángulo de ${miRectángulo.alto}cm de alto y ${miRectángulo.ancho}cm de ancho`);
+//Rectángulo de 3cm de alto y 7cm de ancho
+```
 
 
 arrow function ventajas
