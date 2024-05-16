@@ -433,7 +433,7 @@ La cantidad de métodos que podemos realizar con cadenas en JavaScript es amplia
 
 
 Nombre | Descripción
------- | -----------
+:----- | :----------
 charAt()            | Devuelve el carácter en un índice (posición) especificado
 charCodeAt()        | Devuelve el Unicode del carácter en un índice especificado
 concat()            | Devuelve dos o más cadenas unidas
