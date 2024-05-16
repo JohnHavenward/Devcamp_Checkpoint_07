@@ -8,7 +8,7 @@
 [¿Qué es un condicional?](#expresiones-condicionales)</br>
 [¿Qué es un operador ternario?](#operador-ternario)</br>
 [¿Cuál es la diferencia entre una declaración de función y una expresión de función?](#declaraciones-de-función-y-expresiones-de-función)</br>
-TODO [¿Qué es la palabra clave "this" en JS?](#palabra-clave-this)</br>
+[¿Qué es la palabra clave "this" en JS?](#palabra-clave-this)</br>
 
 </br></br></br></br>
 
@@ -1017,82 +1017,78 @@ button.addEventListener("click", function (event) {
 
 # PALABRA CLAVE THIS
 
-> “This” keyword refers to an object that is executing the current piece of code. It references the object that is executing the current function. If the function being referenced is a regular function, “this” references the global object.
+En términos generales, la palabra clave `this` hace referencia al objeto que está ejecutando el fragmento de código actual.
 
-> If the function that is being referenced is a method in an object, “this” references the object itself.
+Cuando `this` está definido dentro de una función el objeto al que hace referencia depende del contexto en el que la función es llamada. Al usar la misma función en contextos diferentes la palabra clave `this` hará referencia a diferentes objetos. Lo que realmente determina el objeto al que `this` hace referencia es dónde se invoca a la función y no dónde es definida esta.
 
+</br>
 
-La palabra clave `this` se puede usar dentro de una función de JavaScript y normalmente hace referencia al propio objeto en el cual se ha invocado la función.
+Podemos ver los principales contextos en los que se puede invocar una función que haga uso de `this` a continuación:
 
-Depende del contexto en el que se invoque la función.
-
-
-> La palabra clave this de una función se comporta un poco diferente en Javascript en comparación con otros lenguajes. Además tiene algunas diferencias entre el modo estricto y el modo no estricto.
-
-> En general, el valor de this está determinado por cómo se invoca a la función. No puede ser establecida mediante una asignación en tiempo de ejecución, y puede ser diferente cada vez que la función es invocada
-
-
-### CONTEXTO GLOBAL
-
-window
-
-
-
-### FUNCIONES
-
-Cuando `this` está definido dentro de una función el objeto al que hace referencia depende del contexto en el que la función es llamada.
-
-- Global
-- Objeto
+- Ámbito global
+- Método de objeto
 - Constructor
+- Función `call()`
 
-### CONTEXTO OBJETO
+</br>
 
-Claramente, en el fragmento anterior, la función foo() se llama en el contexto del objeto obj, por lo tanto this ahora hace referencia a obj. Entonces, cuando se llama a una función con un objeto de contexto, la referencia  this se vincula a dicho objeto.
+
+### ÁMBITO GLOBAL
+
+Cuando hacemos uso de `this` en el ámbito global este siempre hace referencia al objeto Window que contiene la página web.
 
 ```js
-function foo() {
-  this.a = 2;
-}
+console.log(this); //Window
+```
 
-const obj = {
-  foo: foo
+</br>
+
+
+De igual forma, si una función que contenga la palabra clave `this` en su cuerpo es llamada directamente en el programa esta también hace referencia al objeto Window.
+
+```js
+function agregarNota() {
+      this.nota = `'this' se refiere a mí: ${this}`
 };
 
-obj.foo();
-console.log(obj.a); // 2
+agregarNota();
+
+console.log(window.nota); //'this' se refiere a mí: [object Window]
 ```
 
+</br>
 
-Referencia inmediata
+
+### MÉTODO DE OBJETO
+
+Si la función es invocada como un método de un objeto, `this` hace referencia al propio objeto que la invoca.
 
 ```js
-var o = { prop: 37 };
-
-function independent() {
-  return this.prop;
+function describir() {
+      console.log(`El ${this.nombre} tiene ${this.caras} caras`);
 }
 
-o.f = independent;
+const dodecaedro = {
+  nombre: "dodecaedro",
+  caras: 12,
+  describir : describir,
+};
 
-console.log(o.f()); // logs 37
+const icosaedro = {
+  nombre: "icosaedro",
+  caras: 20,
+  describir : describir,
+};
+
+dodecaedro.describir(); //El dodecaedro tiene 12 caras
+
+icosaedro.describir(); //El icosaedro tiene 20 caras
 ```
 
-Esto demuestra que sólo importa que la función fue invocada del elemento f de o.
-
-Asimismo, el enlace this sólo se ve afectado por la referencia del miembro más inmediata. En el siguiente ejemplo, cuando invocamos a la función, lo llamamos como metodo g del objeto o.b. Esta vez durante la ejecución, this dentro de la función se referirá a o.b. El hecho de que el objeto es en sí mismo un elemento de o no tiene ninguna consecuencia, la referencia más inmediata es todo lo que importa.
-
-```js
-o.b = { g: independent, prop: 42 };
-console.log(o.b.g()); // logs 42
-```
+</br>
 
 
-
-
-
-
-### CONSTRUCTORES
+### CONSTRUCTOR
 
 Cuando usamos `this` dentro de un constructor este hace referencia al nuevo objeto creado mediante la palabra clave `new`.
 
@@ -1110,19 +1106,27 @@ console.log(`Rectángulo de ${miRectángulo.alto}cm de alto y ${miRectángulo.an
 //Rectángulo de 3cm de alto y 7cm de ancho
 ```
 
-
-arrow function ventajas
-
+</br>
 
 
+### FUNCIÓN CALL()
 
+Con la función `call()` podemos definir de forma explícita a qué objeto debe hacer referencia la palabra clave `this`. Toda función creada tiene predefinido el método `call()`. El primer argumento pasado siempre es el objeto al que queremos que haga referencia y el resto son los parámetros de la función invocada si los hay.
 
+```js
+function darBienvenida(materia) {
+      console.log(`Hola ${this.nombre}, bienvenido a la clase de ${materia}`);
+}
 
+const profesor = {
+      nombre: "Pablo",
+      saludar: darBienvenida,
+}
 
+const alumno = {
+      nombre: "Jorge",
+}
 
-
-
-
-
-
-
+profesor.saludar.call(alumno, "química");
+//Hola Jorge, bienvenido a la clase de química
+```
