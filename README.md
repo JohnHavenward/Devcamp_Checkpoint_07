@@ -1109,7 +1109,7 @@ console.log(`Rectángulo de ${miRectángulo.alto}cm de alto y ${miRectángulo.an
 </br>
 
 
-### FUNCIÓN CALL()
+### FUNCIÓN CALL
 
 Con la función `call()` podemos definir de forma explícita a qué objeto debe hacer referencia la palabra clave `this`. Toda función creada tiene predefinido el método `call()`. El primer argumento pasado siempre es el objeto al que queremos que haga referencia y el resto son los parámetros de la función invocada si los hay.
 
